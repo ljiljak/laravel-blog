@@ -25,6 +25,10 @@ Route::get('/posts/{id}', ['as' => 'single-post', 'uses' => 'PostsController@sho
 
 Route::post('/posts', 'PostsController@store');
 
+
+Route::get('/posts/tag/{tag}', 'TagsController@index')->name('posts-tag');
+
+
 Route::get('/register', 'RegisterController@create');
 
 Route::post('/register', 'RegisterController@store');

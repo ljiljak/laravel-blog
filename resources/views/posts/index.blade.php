@@ -17,6 +17,8 @@ Post koji sam dobio
                     <a href="{{route('single-post', ['id' => $post->id])}}" > {{$post->title}} </a>
                     <p>by <i><a href="{{ route('users', ['user_id' => $post->user_id])}}">{{ $post->user->name }}</a></i></p>
                     <p>{{ $post->body }}</p>
+                    <a href=" {{ route('/post/tags', ['tag'=>$tag])}} "> {{ $tag->name }}
+                    </a>
                 </li>
                 
             @endforeach
