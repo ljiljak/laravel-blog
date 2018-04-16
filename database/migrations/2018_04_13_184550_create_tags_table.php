@@ -19,7 +19,7 @@ class CreateTagsTable extends Migration
             $table->timestamps();
         });
 
-        Schema::create('post', 'tag', function (Blueprint $table) {
+        Schema::create('post_tag', function (Blueprint $table) {
             $table->integer('post_id');
             $table->integer('tag_id');
             $table->primary(['post_id', 'tag_id']);

@@ -12,10 +12,10 @@ class TagsTableSeeder extends Seeder
     public function run()
     {
         $values = [
-        	'Blogging'
-        	'Freelancing'
-        	'How to Succeed'
-        	'Internet Makreting'
+        	'Blogging',
+        	'Freelancing',
+        	'How to Succeed',
+        	'Internet Makreting',
         	'Miscellaneous'
         ];
     	
@@ -23,12 +23,12 @@ class TagsTableSeeder extends Seeder
 
     	foreach ($values as $v) {
     		App\Tag::create([
-    			'name' => $v0
+    			'name' => $v
        		]);
     	}
 
     	App\Post::all()->each(function (App\Post $p) use ($values) {
-    		$rndIds = App\Tag:inRandomOrder()->select('id')->tako(3)->pluck('id');
+    		$rndIds = App\Tag::inRandomOrder()->select('id')->take(3)->pluck('id');
     		$p->tags()->attach($rndIds);
     	});
 

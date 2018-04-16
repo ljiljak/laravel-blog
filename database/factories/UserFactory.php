@@ -32,6 +32,6 @@ $factory->define(App\Post::class, function(Faker $faker) {
 
 $factory->define(App\Comment::class, function(Faker $faker) {
     return [
-        'text' => $faker->text(30),
+        'body' => $faker->text(30),
     ];
 });

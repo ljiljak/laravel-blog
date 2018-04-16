@@ -1,29 +1,19 @@
 @extends('layouts.master')
-
-@section('title')
-Post koji sam dobio
-@endsection
-
-
 @section('content')
-
 <div class="col-sm-8 blog-main">
-	<div class="blog-post">
-		<h1 class="blog-post-title">Postovi</h1>
-
-        <ul>
-            @foreach($posts as $post)
-               <li>
-                    <a href="{{route('single-post', ['id' => $post->id])}}" > {{$post->title}} </a>
-                    <p>by <i><a href="{{ route('users', ['user_id' => $post->user_id])}}">{{ $post->user->name }}</a></i></p>
-                    <p>{{ $post->body }}</p>
-                    <a href=" {{ route('/post/tags', ['tag'=>$tag])}} "> {{ $tag->name }}
-                    </a>
-                </li>
-                
-            @endforeach
-        </ul>
-    </div>
+    @foreach($posts as $post)
+        <div class="blog-post">
+            <h2 class="blog-post-title"><a href="/posts/{{ $post->id }}">{{ $post->title }}</a></h2>
+            <p class="blog-post-meta">{{ $post->created_at->toFormattedDateString() }} by <a href="#">Mark</a></p>
+            <p>{{ $post->body }}</p>
+        </div><!-- /.blog-post -->
+    @endforeach
+    <nav class="blog-pagination">
+        <a class="btn btn-outline-{{ $posts->currentPage() == 1 ? 'secondary disabled' : 'primary'  }}" 
+        href="{{ $posts->previousPageUrl() }}">Previous</a>
+        <a class="btn btn-outline-{{ $posts->hasMorePages() ? 'primary' : 'secondary disabled' }}" 
+        href="{{ $posts->nextPageUrl() }}">Next</a>
+    </nav>
 </div>
-
 @endsection
+
