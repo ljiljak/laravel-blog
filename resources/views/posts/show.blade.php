@@ -5,6 +5,9 @@
 @endsection
 
 @section('content')
+<div class="col-sm-8 blog-main">
+    <div class="blog-post">
+        
     <h1 class="blog-post-title">{{ $post->title }}</h1>
     <p>{{ $post->body }}</p>
 
@@ -32,4 +35,6 @@
                     <li>Nema komentara</li>
             @endforelse
         </ul>
+    </div>
+</div>
 @endsection
